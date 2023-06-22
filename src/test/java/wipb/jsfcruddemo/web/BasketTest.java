@@ -31,6 +31,7 @@ private Discount discount = new Discount();
 
     @Test
     public void checkBasketRemoveMultipleOfSameProductTest(){
+
         basket.addProduct(product1, BigDecimal.ONE,discount);
         basket.addProduct(product1, BigDecimal.TEN,discount);
         basket.addProduct(product1, BigDecimal.ONE,discount);
@@ -41,13 +42,16 @@ private Discount discount = new Discount();
 
     @Test
     public void checkBasketRemoveWith2ProductsTest(){
+        product1.setId(1L);
+        product2.setId(2L);
+
         basket.addProduct(product2, BigDecimal.ONE,discount);
         basket.addProduct(product1, BigDecimal.ONE,discount);
 
 
         basket.removeProduct(product2);
         basketProducts=basket.getBasketProducts();
-        assert(basket.getBasketProducts().size()==0);
+        assert(basket.getBasketProducts().size()==1);
     }
 
     @Test
